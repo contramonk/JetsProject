@@ -42,7 +42,7 @@ public class Jets {
 	}
 	//toString
 	public String toString() {
-		String print = "model: " + model + " speed: " + speed + " range: " + range + " capacity: " + capacity;
+		String print = String.format("model: " + model + " speed: Mach: %.2f " + "range: %.2f  capacity: " + capacity, speed, range);
 		return print;
 	}
 	//methods

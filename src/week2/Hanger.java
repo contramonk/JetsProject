@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Hanger {
 	private Jets[] jets;
-	
+
 	// constructor
 	public Hanger() {
 		jets = new Jets[5];
@@ -14,36 +14,49 @@ public class Hanger {
 		jets[3] = new Jets("F23", 13000, 500, 5);
 		jets[4] = new Jets("F24", 1000, 500, 6);
 	}
-	
-	//get and set
+
+	// get and set
 	public Jets[] getJets() {
 		return jets;
 	}
+
 	public void setJets(Jets[] j) {
 		this.jets = j;
 	}
-	
+
 	public void addJet(String model, double speed, double range, int capacity) {
 		Jets[] addJets = new Jets[jets.length + 1];
-		for (int i = 0; i < addJets.length -1; i++) {
+		for (int i = 0; i < addJets.length - 1; i++) {
 			addJets[i] = jets[i];
 		}
 		addJets[jets.length] = new Jets(model, speed, range, capacity);
 		jets = addJets;
-		
+
 		printJets();
 	}
+
 	public void fastestJet() {
-		double fastest = jets[0].getSpeed();
-		Jets fastestJet = jets[0];
-		for (int i = 0; i < jets.length; i++) {
-			if (jets[i].getSpeed() > fastest) {
-				fastest = jets[i].getSpeed();
-				fastestJet = jets[i];
+		for (int j = 0; j < jets.length; j++) {
+			for (int i = 0; i < jets.length; i++) {
+
+				try {
+					if (jets[i].getSpeed() < jets[i + 1].getSpeed()) {
+						Jets jetStore2 = jets[i + 1];
+						jets[i + 1] = jets[i];
+						jets[i] = jetStore2;
+					}
+				} catch (ArrayIndexOutOfBoundsException e) {
+					if (jets[i].getSpeed() < jets[i].getSpeed()) {
+						Jets jetStore2 = jets[i];
+						jets[i] = jets[i];
+						jets[i] = jetStore2;
+					}
+				}
 			}
 		}
-		System.out.println(fastestJet);
+		printJets();
 	}
+
 	public void furthestJet() {
 		double furthest = jets[0].getRange();
 		Jets furthestJet = jets[0];
@@ -55,11 +68,13 @@ public class Hanger {
 		}
 		System.out.println(furthestJet);
 	}
+
 	public void printJets() {
 		for (Jets jet : jets) {
 			System.out.println(jet);
 		}
 	}
+
 	public void enterJets(Scanner kb, Hanger hanger) {
 		String model;
 		double speed;
