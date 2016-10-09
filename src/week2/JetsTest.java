@@ -15,48 +15,32 @@ public class JetsTest {
 		int choice = 1;
 		
 		
-		while (choice != 4) {
-			System.out.println("1) Fastest");
-			System.out.println("2) Furthest");
-			System.out.println("3) Add");
-			System.out.println("4) Quit");
+		while (choice != 5) {
+			System.out.println("1) List Jets");
+			System.out.println("2) Fastest");
+			System.out.println("3) Furthest");
+			System.out.println("4) Add");
+			System.out.println("5) Quit");
 			System.out.print("What do you chose >> ");
 			choice = kb.nextInt();
 			switch (choice) {
 			case 1:
-				hanger.fastestJet();
+				hanger.printJets();
 				break;
 			case 2:
-				hanger.furthestJet();
+				hanger.fastestJet();
 				break;
 			case 3:
-				enterJets(kb, hanger);
+				hanger.furthestJet();
 				break;
 			case 4:
+				hanger.enterJets(kb, hanger);
+				break;
+			case 5:
 				break;
 			default:
 				System.out.println("I don't understand?");
-			}
-				
+			}	
 		}
-	}
-
-	public static void enterJets(Scanner kb, Hanger hanger) {
-		String model;
-		double speed;
-		double range;
-		int capacity;
-
-		System.out.println("Enter model:");
-		model = kb.next();
-		System.out.println("Enter speed:");
-		speed = kb.nextDouble();
-		System.out.println("Enter range:");
-		range = kb.nextDouble();
-		System.out.println("Enter capacity:");
-		capacity = kb.nextInt();
-
-		hanger.addJet(model, speed, range, capacity);
-
 	}
 }

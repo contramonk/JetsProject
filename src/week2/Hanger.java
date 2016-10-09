@@ -1,5 +1,7 @@
 package week2;
 
+import java.util.Scanner;
+
 public class Hanger {
 	private Jets[] jets;
 	
@@ -29,7 +31,7 @@ public class Hanger {
 		addJets[jets.length] = new Jets(model, speed, range, capacity);
 		jets = addJets;
 		
-		printJets(jets);
+		printJets();
 	}
 	public void fastestJet() {
 		double fastest = jets[0].getSpeed();
@@ -53,9 +55,27 @@ public class Hanger {
 		}
 		System.out.println(furthestJet);
 	}
-	public void printJets(Jets[] jet) {
-		for (Jets jets : jet) {
-			System.out.println(jets);
+	public void printJets() {
+		for (Jets jet : jets) {
+			System.out.println(jet);
 		}
+	}
+	public void enterJets(Scanner kb, Hanger hanger) {
+		String model;
+		double speed;
+		double range;
+		int capacity;
+
+		System.out.println("Enter model:");
+		model = kb.next();
+		System.out.println("Enter speed:");
+		speed = kb.nextDouble();
+		System.out.println("Enter range:");
+		range = kb.nextDouble();
+		System.out.println("Enter capacity:");
+		capacity = kb.nextInt();
+
+		hanger.addJet(model, speed, range, capacity);
+
 	}
 }
