@@ -14,19 +14,30 @@ public class JetsTest {
 		Hanger hanger = new Hanger();
 		int choice = 1;
 		
-		System.out.println("1) Fastest");
-		System.out.println("2) Furthest");
-		System.out.println("3) Add");
-		System.out.println("4) Quit");
 		
 		while (choice != 4) {
+			System.out.println("1) Fastest");
+			System.out.println("2) Furthest");
+			System.out.println("3) Add");
+			System.out.println("4) Quit");
 			System.out.print("What do you chose >> ");
 			choice = kb.nextInt();
 			switch (choice) {
 			case 1:
+				hanger.fastestJet();
+				break;
+			case 2:
+				hanger.furthestJet();
+				break;
+			case 3:
 				enterJets(kb, hanger);
 				break;
+			case 4:
+				break;
+			default:
+				System.out.println("I don't understand?");
 			}
+				
 		}
 	}
 

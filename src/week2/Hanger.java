@@ -7,10 +7,10 @@ public class Hanger {
 	public Hanger() {
 		jets = new Jets[5];
 		jets[0] = new Jets("F16", 10000, 200, 2);
-		jets[1] = new Jets("F20", 11000, 300, 3);
-		jets[2] = new Jets("F20", 12000, 400, 4);
-		jets[3] = new Jets("F20", 13000, 500, 5);
-		jets[4] = new Jets("F20", 14000, 600, 6);
+		jets[1] = new Jets("F21", 11000, 300, 3);
+		jets[2] = new Jets("F22", 12000, 400, 4);
+		jets[3] = new Jets("F23", 13000, 500, 5);
+		jets[4] = new Jets("F24", 1000, 500, 6);
 	}
 	
 	//get and set
@@ -30,6 +30,28 @@ public class Hanger {
 		jets = addJets;
 		
 		printJets(jets);
+	}
+	public void fastestJet() {
+		double fastest = jets[0].getSpeed();
+		Jets fastestJet = jets[0];
+		for (int i = 0; i < jets.length; i++) {
+			if (jets[i].getSpeed() > fastest) {
+				fastest = jets[i].getSpeed();
+				fastestJet = jets[i];
+			}
+		}
+		System.out.println(fastestJet);
+	}
+	public void furthestJet() {
+		double furthest = jets[0].getRange();
+		Jets furthestJet = jets[0];
+		for (int i = 0; i < jets.length; i++) {
+			if (jets[i].getRange() > furthest) {
+				furthest = jets[i].getRange();
+				furthestJet = jets[i];
+			}
+		}
+		System.out.println(furthestJet);
 	}
 	public void printJets(Jets[] jet) {
 		for (Jets jets : jet) {
