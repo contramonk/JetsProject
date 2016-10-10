@@ -1,4 +1,5 @@
 package week2;
+import java.util.*;
 
 public class Jets {
 	
@@ -12,9 +13,10 @@ public class Jets {
 	
 	//constructor
 	public Jets() {
-		pilots = new Pilot[0];
+	
 	}
 	public Jets(String mod, double sp, double rng, int cap, double pr) {
+		pilots = new Pilot[0];
 		setModel(mod);
 		setSpeed(sp);
 		setRange(rng);
@@ -61,7 +63,7 @@ public class Jets {
 	}
 	//toString
 	public String toString() {
-		String print = String.format("model: " + model + " speed: Mach: %.2f " + "range: %.2f  capacity: " + capacity + " price: $%.2f", speed, range, price);
+		String print = String.format(model + " \t\tmach %.2f " + "\t%.2f\t\t" + capacity + "\t\t$%.2f\t" + pilots.length, speed, range, price);
 		return print;
 	}
 	//methods
@@ -70,14 +72,39 @@ public class Jets {
 		
 		return mach;
 	}
-	public void addPilot(String name, int age, String xp) {
+	public void addPilot(String name, int age, String xp, Hanger hanger) {
 		Pilot[] addPilot = new Pilot[pilots.length + 1];
 		for (int i = 0; i < addPilot.length - 1; i++) {
 			addPilot[i] = pilots[i];
 		}
 		addPilot[pilots.length] = new Pilot(name, age, xp);
 		pilots = addPilot;
+		
+		printPilot(hanger);
 	}
-	
+	public void enterPilot(Scanner kb, Hanger hanger) {
+		String name;
+		int age;
+		String xp;
+		
+		System.out.print("pilots name: ");
+		name = kb.next();
+		System.out.print("pilots age: ");
+		age = kb.nextInt();
+		System.out.print("pilots xp: ");
+		xp = kb.next();
+		
+		addPilot(name, age, xp, hanger);
+	}
+	public void printPilot(Hanger hanger) {
+		int itemNum = 1;
+		System.out.println("---------" + model + "-------------");
+		System.out.println("   name\t\tage\t\texperience");
+		for (Pilot pilot : pilots) {
+			System.out.println(itemNum + ") " + pilot);
+		}
+		System.out.println("----------------------------");
+		hanger.printJets();
+	}
 }
 

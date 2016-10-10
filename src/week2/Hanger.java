@@ -13,11 +13,13 @@ public class Hanger {
 		jets[2] = new Jets("F22", 12000, 400, 4, 5005060);
 		jets[3] = new Jets("F23", 13000, 500, 5, 2010500);
 		jets[4] = new Jets("F24", 1000, 500, 6, 1000600);
+		
+		setJets(jets);
 	}
 
 	// get and set
-	public Jets[] getJets() {
-		return jets;
+	public Jets getJets(int pick) {
+		return jets[pick];
 	}
 
 	public void setJets(Jets[] j) {
@@ -122,9 +124,13 @@ public class Hanger {
 	}
 
 	public void printJets() {
+		int listNum = 1;
+		System.out.println("---------------------------");
+		System.out.println("   model\t\tspeed\t\trange\t\tcapacity\t\tprice\t\tnumPilots");
 		for (Jets jet : jets) {
-			System.out.println(jet);
+			System.out.println(listNum++ + ") " + jet);
 		}
+		System.out.println("----------------------------");
 	}
 
 	public void enterJets(Scanner kb, Hanger hanger) {

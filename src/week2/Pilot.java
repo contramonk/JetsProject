@@ -28,4 +28,8 @@ public class Pilot {
 	public void setXp(String x) {
 		this.xp = x;
 	}
+	public String toString() {
+		String print = name + "\t\t" + age + "\t\t" + xp;
+		return print;
+	}
 }
