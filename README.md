@@ -7,3 +7,6 @@
 
 ####This program begins with five jets. The user can add a jet to the fleet, or
 ####add a pilot to a jet. They can also list the jets with some sorting options.
+
+####also i wanted the lists to look more like a spreadsheet, but had trouble
+####getting the formatting to stick when different sized elements are entered.
